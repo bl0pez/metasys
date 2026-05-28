@@ -28,7 +28,7 @@ function App() {
         </nav>
       </header>
 
-      <main>
+      <main className={styles.mainContent}>
         {activeTab === 'dashboard' ? <Dashboard /> : <Settings />}
       </main>
     </div>

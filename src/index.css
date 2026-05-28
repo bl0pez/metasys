@@ -24,13 +24,17 @@
   --warning-glow: rgba(245, 158, 11, 0.2);
   
   /* UI Elements */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-sm: 4px;
+  --radius-md: 5px;
+  --radius-lg: 5px;
+  --radius-xl: 5px;
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   
   color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -38,7 +42,8 @@ body {
   padding: 0;
   background-color: var(--bg-base);
   color: var(--text-primary);
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

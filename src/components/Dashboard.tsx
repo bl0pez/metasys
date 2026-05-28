@@ -116,7 +116,7 @@ const Dashboard: React.FC = () => {
             className={styles.filterInput}
           />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div className={styles.umasListContainer}>
           {filteredUmas.length === 0 ? (
             <p style={{ color: 'var(--text-secondary)' }}>No se encontraron equipos.</p>
           ) : (
