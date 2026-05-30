@@ -18,10 +18,12 @@ pub struct MetasysClient {
     pub command_url: String,
     pub telemetry_url: String,
     pub token_cache: Arc<RwLock<Option<TokenCache>>>,
+    pub auth_user: String,
+    pub auth_pass: String,
 }
 
 impl MetasysClient {
-    pub fn new() -> Self {
+    pub fn new(host: &str, user: &str, pass: &str) -> Self {
         // Ignoramos certificados inválidos por ser red interna
         let client = Client::builder()
             .danger_accept_invalid_certs(true)
@@ -30,11 +32,12 @@ impl MetasysClient {
 
         Self {
             client,
-            // Valores por defecto
-            login_url: "https://10.6.18.102/API/private-api/Authentication/LogIn".to_string(),
-            command_url: "https://10.6.18.102/API/private-api/Command/SendCommands".to_string(),
-            telemetry_url: "https://10.6.18.102/API/private-api/Equipment/GetPointsDetails".to_string(),
+            login_url: format!("https://{}/API/private-api/Authentication/LogIn", host),
+            command_url: format!("https://{}/API/private-api/Command/SendCommands", host),
+            telemetry_url: format!("https://{}/API/private-api/Equipment/GetPointsDetails", host),
             token_cache: Arc::new(RwLock::new(None)),
+            auth_user: user.to_string(),
+            auth_pass: pass.to_string(),
         }
     }
 
@@ -63,8 +66,8 @@ impl MetasysClient {
         info!("Token no válido o expirado. Iniciando proceso de Login en Metasys...");
 
         let payload = json!({
-            "username": "operador",
-            "password": "Hospital2020$",
+            "username": self.auth_user,
+            "password": self.auth_pass,
             "domain": ""
         });
 
@@ -102,11 +105,14 @@ impl MetasysClient {
     }
 
     pub async fn send_command(&self, token: &str, reference: &str, value: &str) -> Result<String, Box<dyn Error + Send + Sync>> {
-        let payload = if value == "RELEASE" {
+        let clean_ref = reference.trim();
+        let clean_val = value.trim();
+
+        let payload = if clean_val == "RELEASE" {
             json!({
                 "Commands": [
                     {
-                        "Reference": reference,
+                        "Reference": clean_ref,
                         "EquipmentReference": "",
                         "Type": 4,
                         "Parameters": []
@@ -117,14 +123,16 @@ impl MetasysClient {
             json!({
                 "Commands": [
                     {
-                        "Reference": reference,
+                        "Reference": clean_ref,
                         "EquipmentReference": "",
                         "Type": 1,
-                        "Parameters": [value]
+                        "Parameters": [clean_val]
                     }
                 ]
             })
         };
+
+        log::info!("Payload a enviar a Metasys: {}", serde_json::to_string(&payload).unwrap_or_default());
 
         let res = self.client
             .post(&self.command_url)
@@ -140,7 +148,12 @@ impl MetasysClient {
             return Err("Token rechazado por el servidor (401). Caché invalidado.".into());
         }
 
-        res.error_for_status_ref()?;
+        if !res.status().is_success() {
+            let status = res.status();
+            let error_body = res.text().await.unwrap_or_else(|_| "No se pudo leer el body del error".to_string());
+            return Err(format!("Metasys rechazó el comando ({}). Body: {}", status, error_body).into());
+        }
+
         let txt = res.text().await?;
         Ok(txt)
     }

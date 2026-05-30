@@ -6,6 +6,7 @@ mod state;
 
 use state::{AppState, Uma, UmaPoint, QueuedCommand};
 use std::sync::Arc;
+use tokio::sync::Notify;
 use tauri::State;
 use uuid::Uuid;
 
@@ -24,6 +25,7 @@ async fn add_uma(name: String, state: State<'_, Arc<AppState>>) -> Result<Uma, S
         points: Vec::new(),
     };
     umas.push(new_uma.clone());
+    state.save_to_disk().await;
     Ok(new_uma)
 }
 
@@ -39,6 +41,7 @@ async fn add_point(uma_id: String, name: String, reference: String, control_type
     
     if let Some(uma) = umas.iter_mut().find(|u| u.id == uma_id) {
         uma.points.push(new_point.clone());
+        state.save_to_disk().await;
         Ok(new_point)
     } else {
         Err("UMA no encontrada".to_string())
@@ -61,6 +64,10 @@ async fn enqueue_command(uma_name: String, point_name: String, reference: String
     };
     
     queue.push(cmd);
+    
+    // Notificamos al worker de que hay comandos nuevos
+    state.notify.notify_one();
+    
     Ok(id)
 }
 
@@ -74,6 +81,7 @@ async fn get_queue_status(state: State<'_, Arc<AppState>>) -> Result<Vec<QueuedC
 async fn remove_uma(id: String, state: State<'_, Arc<AppState>>) -> Result<(), String> {
     let mut umas = state.umas.lock().await;
     umas.retain(|u| u.id != id);
+    state.save_to_disk().await;
     Ok(())
 }
 
@@ -83,6 +91,7 @@ async fn remove_point(uma_id: String, point_id: String, state: State<'_, Arc<App
     if let Some(uma) = umas.iter_mut().find(|u| u.id == uma_id) {
         uma.points.retain(|p| p.id != point_id);
     }
+    state.save_to_disk().await;
     Ok(())
 }
 

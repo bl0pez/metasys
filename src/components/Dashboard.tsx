@@ -27,7 +27,7 @@ const PointRow = ({ umaName, point, onCommand }: { umaName: string, point: UmaPo
           <span className={styles.analogValue}>{analogValue}{unit}</span>
           <button 
             className={styles.btnClean}
-            onClick={() => onCommand(umaName, point.name, point.reference, analogValue.toString().replace('.', ','), `SOBRECOMANDAR A ${analogValue}${unit}`)}
+            onClick={() => onCommand(umaName, point.name, point.reference, analogValue.toString(), `SOBRECOMANDAR A ${analogValue}${unit}`)}
           >
             Fijar
           </button>
@@ -76,6 +76,17 @@ const Dashboard: React.FC = () => {
   const handleCommand = (umaName: string, pointName: string, reference: string, action: string, actionName: string) => {
     if (window.confirm(`¿Estás seguro de que deseas ${actionName} en:\n${umaName} -> ${pointName}?`)) {
       enqueueCommand(umaName, pointName, reference, action);
+      
+      // Macro oculta: Si mandamos Habilitación UMA, replicar el mismo comando al Ventilador
+      if (pointName === "Habilitación UMA") {
+        const uma = umas.find(u => u.name === umaName);
+        if (uma) {
+          const vent = uma.points.find(p => p.name === "Comando Ventilador");
+          if (vent) {
+            enqueueCommand(umaName, vent.name, vent.reference, action);
+          }
+        }
+      }
     }
   };
 
@@ -127,7 +138,7 @@ const Dashboard: React.FC = () => {
                   {uma.points.length === 0 ? (
                     <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Sin puntos de control configurados.</p>
                   ) : (
-                    uma.points.map((point) => (
+                    uma.points.filter(p => p.name !== "Comando Ventilador").map((point) => (
                       <PointRow key={point.id} umaName={uma.name} point={point} onCommand={handleCommand} />
                     ))
                   )}
