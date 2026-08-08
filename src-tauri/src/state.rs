@@ -127,6 +127,82 @@ impl AppState {
             });
         }
 
+        // Recuperación Parto (UMA 2.20) - Similar a UMA 2.1
+        initial_umas.push(Uma {
+            id: Uuid::new_v4().to_string(),
+            name: "Recuperación Parto (UMA 2.20)".to_string(),
+            points: vec![
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Habilitación UMA".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.ENABLE UMA".to_string(),
+                    control_type: "toggle".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Válvula de Frío".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.CLG SL-O".to_string(),
+                    control_type: "analog".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Válvula de Calor".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.HTG SL-O".to_string(),
+                    control_type: "analog".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Comando Ventilador".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.SF-C".to_string(),
+                    control_type: "toggle".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Setpoint T° (Pabellón)".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.ZNT-SP".to_string(),
+                    control_type: "temperature".to_string(),
+                }
+            ],
+        });
+
+        // Farmacia Cerrada (UMA 1.91) - Similar a UMA 2.9
+        initial_umas.push(Uma {
+            id: Uuid::new_v4().to_string(),
+            name: "Farmacia Cerrada (UMA 1.91)".to_string(),
+            points: vec![
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Habilitación UMA".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.UNITEN-MODE".to_string(),
+                    control_type: "toggle".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Válvula de Frío".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.CLG-O".to_string(),
+                    control_type: "analog".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Válvula de Calor".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.HTG-O".to_string(),
+                    control_type: "analog".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Comando Ventilador".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.SF-C".to_string(),
+                    control_type: "toggle".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Setpoint T° (Pabellón)".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.ZNT-SP".to_string(),
+                    control_type: "temperature".to_string(),
+                }
+            ],
+        });
+
         AppConfig {
             metasys: MetasysConfig {
                 host: "10.6.18.102".to_string(),

@@ -69,6 +69,56 @@ const PointRow = ({ umaName, point, onCommand }: { umaName: string, point: UmaPo
   );
 };
 
+const EquipmentCard = ({ uma, onCommand }: { uma: any, onCommand: any }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  // Buscar el punto de "Habilitación UMA"
+  const habilitacionPoint = uma.points.find((p: any) => p.name.toLowerCase().includes("habilitaci"));
+  
+  // Todos los demás puntos, excluyendo el ventilador (que está oculto) y la habilitación
+  const otherPoints = uma.points.filter((p: any) => 
+    p.name !== "Comando Ventilador" && p.id !== habilitacionPoint?.id
+  );
+
+  return (
+    <div className={styles.equipmentCard}>
+      <div 
+        className={styles.equipmentHeader} 
+        onClick={() => setExpanded(!expanded)}
+        style={{ cursor: 'pointer', borderBottom: (expanded || habilitacionPoint) ? '1px solid var(--border-subtle)' : 'none', paddingBottom: (expanded || habilitacionPoint) ? '1rem' : '0', marginBottom: (expanded || habilitacionPoint) ? '1rem' : '0' }}
+      >
+        <h3 className={styles.equipmentTitle}>{uma.name}</h3>
+        <button 
+          className={styles.expandBtn}
+          style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0)' }}
+        >
+          ▼
+        </button>
+      </div>
+      
+      {/* Siempre mostramos la habilitación de UMA (si existe) */}
+      {habilitacionPoint && (
+        <div style={{ marginBottom: expanded ? '1rem' : '0' }}>
+          <PointRow umaName={uma.name} point={habilitacionPoint} onCommand={onCommand} />
+        </div>
+      )}
+
+      {/* Solo mostramos el resto si está expandido */}
+      {expanded && (
+        <div className={styles.umasList}>
+          {otherPoints.length === 0 ? (
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Sin puntos adicionales.</p>
+          ) : (
+            otherPoints.map((point: any) => (
+              <PointRow key={point.id} umaName={uma.name} point={point} onCommand={onCommand} />
+            ))
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Dashboard: React.FC = () => {
   const { umas, queue, enqueueCommand } = useMetasys();
   const [filterText, setFilterText] = useState('');
@@ -132,18 +182,7 @@ const Dashboard: React.FC = () => {
             <p style={{ color: 'var(--text-secondary)' }}>No se encontraron equipos.</p>
           ) : (
             filteredUmas.map((uma) => (
-              <div key={uma.id} className={styles.equipmentCard}>
-                <h3 className={styles.equipmentTitle}>{uma.name}</h3>
-                <div className={styles.umasList}>
-                  {uma.points.length === 0 ? (
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Sin puntos de control configurados.</p>
-                  ) : (
-                    uma.points.filter(p => p.name !== "Comando Ventilador").map((point) => (
-                      <PointRow key={point.id} umaName={uma.name} point={point} onCommand={handleCommand} />
-                    ))
-                  )}
-                </div>
-              </div>
+              <EquipmentCard key={uma.id} uma={uma} onCommand={handleCommand} />
             ))
           )}
         </div>

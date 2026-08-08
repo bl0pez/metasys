@@ -6,35 +6,35 @@
   },
   "umas": [
     {
-      "id": "7c9b2c04-a188-4790-8c80-2e664087285e",
+      "id": "a24415af-b4a8-4420-9ee3-f274e901e67f",
       "name": "Pabellón 1 (UMA 2.1)",
       "points": [
         {
-          "id": "29d4b4dd-7f17-4f5e-bc02-2085f9607fb5",
+          "id": "ab6a06f5-d434-411d-b491-eada178be816",
           "name": "Habilitación UMA",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-1.ENABLE UMA",
           "control_type": "toggle"
         },
         {
-          "id": "94969a2a-ecda-4332-978f-31845bb2053d",
+          "id": "e3737622-f258-4f08-a9b1-29125b3ecd20",
           "name": "Válvula de Frío",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-1.CLG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "7a12df83-da0e-4b66-8bab-a7c11a290e14",
+          "id": "2520efdc-3885-4c4f-85f6-9b4a50de2a0b",
           "name": "Válvula de Calor",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-1.HTG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "ebfcf2d0-8753-4163-8da7-3db9b77ccc02",
+          "id": "6f6d8c2d-ac03-418f-959b-0b6412edc77c",
           "name": "Comando Ventilador",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-1.SF-C",
           "control_type": "toggle"
         },
         {
-          "id": "bc588b24-d30e-4836-a44c-0359a28d8b68",
+          "id": "19a4d465-c65f-4def-926c-47b324ad1493",
           "name": "Setpoint T° (Pabellón)",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-1.ZNT-SP",
           "control_type": "temperature"
@@ -42,35 +42,35 @@
       ]
     },
     {
-      "id": "70e1d7bc-4370-48c4-9511-b45f6fb03abb",
+      "id": "d6abcc70-8b41-4e17-b709-bbd1cafcd36a",
       "name": "Pabellón 2 (UMA 2.2)",
       "points": [
         {
-          "id": "7c7ed679-5aaf-4d53-9537-d80fbdc8ba53",
+          "id": "33f59096-e27c-49ea-afaa-b3979b7b90de",
           "name": "Habilitación UMA",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-2.ENABLE UMA",
           "control_type": "toggle"
         },
         {
-          "id": "706e30b9-68f2-4508-9ce2-97291615bca4",
+          "id": "12460813-0c2a-4086-9adb-d2db44fddaf0",
           "name": "Válvula de Frío",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-2.CLG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "0cf4ed9f-db3c-4dc7-96a5-2a70b627b195",
+          "id": "38cf0446-2f92-4924-8a7d-448154064655",
           "name": "Válvula de Calor",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-2.HTG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "3c788464-f887-4382-a431-ad0abad41a64",
+          "id": "26e03760-f86f-4e21-9c9e-330e2bbb48ee",
           "name": "Comando Ventilador",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-2.SF-C",
           "control_type": "toggle"
         },
         {
-          "id": "c0e140e9-3fc1-4cdb-b47d-146d552e71b4",
+          "id": "a9a5a827-add0-4226-ae61-fda14c28b076",
           "name": "Setpoint T° (Pabellón)",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-2.ZNT-SP",
           "control_type": "temperature"
@@ -78,35 +78,35 @@
       ]
     },
     {
-      "id": "d143dcd1-df38-4033-81dc-13aba99d9522",
+      "id": "984cdaee-3ac0-4d95-b16b-789e4b198858",
       "name": "Pabellón 3 (UMA 2.3)",
       "points": [
         {
-          "id": "925103bf-c38c-48a8-87a5-ab3dfff4f6f8",
+          "id": "173c4f63-d265-415c-9e04-dc7cf7a0c1ab",
           "name": "Habilitación UMA",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-3.ENABLE UMA",
           "control_type": "toggle"
         },
         {
-          "id": "0733d35c-4481-4cef-9464-d4592f3425c9",
+          "id": "e09d0c2c-547c-436f-9c88-2fed46c53e60",
           "name": "Válvula de Frío",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-3.CLG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "5d4f5f52-1ec0-400c-9cd1-5ed65c01baf4",
+          "id": "2372c7ad-d178-4007-bd6c-ce7b2b50901c",
           "name": "Válvula de Calor",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-3.HTG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "f9c4ace2-9242-46cc-9c32-030c10d27354",
+          "id": "5226b421-a454-4f0a-9591-4a34f68e4411",
           "name": "Comando Ventilador",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-3.SF-C",
           "control_type": "toggle"
         },
         {
-          "id": "385614fb-e5f4-424f-83a7-e5a4675fcdbc",
+          "id": "84add00a-6288-40d0-a0f0-fe33c6dcc963",
           "name": "Setpoint T° (Pabellón)",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-3.ZNT-SP",
           "control_type": "temperature"
@@ -114,35 +114,35 @@
       ]
     },
     {
-      "id": "97ec8e3c-4212-4872-9459-f228901326cc",
+      "id": "aed93e68-84cb-435a-aead-48c79c5c53d3",
       "name": "Pabellón 4 (UMA 2.4)",
       "points": [
         {
-          "id": "18845734-31e6-435d-a9c0-bd48dc3b94c0",
+          "id": "aac1a912-dd9b-4396-8412-644c88f0968f",
           "name": "Habilitación UMA",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-4.ENABLE UMA",
           "control_type": "toggle"
         },
         {
-          "id": "ba81f2ba-bfd9-424f-9612-10ba9539e280",
+          "id": "bf8ebcad-820b-4b11-86e9-ede5a3438070",
           "name": "Válvula de Frío",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-4.CLG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "80035b81-6d9c-4d07-aa3d-30439048e303",
+          "id": "2d11c524-493d-47b4-8d61-41a12420606f",
           "name": "Válvula de Calor",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-4.HTG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "08ef84f1-e8b8-436d-99ba-4ade46c8be69",
+          "id": "ac9f5319-5a6b-430f-b705-43fcda0bfe2d",
           "name": "Comando Ventilador",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-4.SF-C",
           "control_type": "toggle"
         },
         {
-          "id": "e0eae4ee-d364-4aef-9798-2895aa3ddc5f",
+          "id": "06a33359-0aa0-483a-a4f7-3a6a8acd1295",
           "name": "Setpoint T° (Pabellón)",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-4.ZNT-SP",
           "control_type": "temperature"
@@ -150,35 +150,35 @@
       ]
     },
     {
-      "id": "008b61d8-2fb9-4777-9d29-e3edbd2ae8fb",
+      "id": "215d1bea-c35c-499e-a665-b5df973412c7",
       "name": "Pabellón 5 (UMA 2.5)",
       "points": [
         {
-          "id": "f338952f-0572-460b-a46c-5847c7c82c89",
+          "id": "5e4bc316-5fcf-40f8-8efd-fcecbff19ac7",
           "name": "Habilitación UMA",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-5.ENABLE UMA",
           "control_type": "toggle"
         },
         {
-          "id": "f9099f71-abfb-4aa3-bb67-f1625d736d64",
+          "id": "d754795c-3317-48db-b5fe-33b1e7db5784",
           "name": "Válvula de Frío",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-5.CLG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "1b7ba854-5564-4672-9bb1-72c0e490a297",
+          "id": "0d7a08ac-e59b-4272-afbe-348d107e96c2",
           "name": "Válvula de Calor",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-5.HTG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "61d3ddd2-e5f4-4b94-9853-cab85b285d07",
+          "id": "0643eff8-e3a2-452c-80be-35256fac7ca6",
           "name": "Comando Ventilador",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-5.SF-C",
           "control_type": "toggle"
         },
         {
-          "id": "9aae8b1d-b1e2-48f4-89f8-53383b13cfe3",
+          "id": "d3c7aec9-2adf-4474-956a-57d5f78aab10",
           "name": "Setpoint T° (Pabellón)",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-5.ZNT-SP",
           "control_type": "temperature"
@@ -186,35 +186,35 @@
       ]
     },
     {
-      "id": "95bf507e-d2be-4938-b197-f1a6f052a070",
+      "id": "780769c0-d23c-443c-a14f-a08bb3a53d33",
       "name": "Pabellón 6 (UMA 2.6)",
       "points": [
         {
-          "id": "94f5f7fb-ad55-419f-878b-331943c8f34d",
+          "id": "eda8f5db-e71a-4940-b31c-fcd6f8a290ab",
           "name": "Habilitación UMA",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-6.ENABLE UMA",
           "control_type": "toggle"
         },
         {
-          "id": "bafb184e-e01f-49ff-91c5-ce55b4f01fd2",
+          "id": "1638c348-7b69-41fd-8b8d-62dbbdef6c3e",
           "name": "Válvula de Frío",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-6.CLG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "9ce2f3a6-ed70-49d9-bea4-d8f609b1785f",
+          "id": "7977c28c-fd68-4169-a01d-ee732f151ca6",
           "name": "Válvula de Calor",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-6.HTG SL-O",
           "control_type": "analog"
         },
         {
-          "id": "dffc7e94-a522-497a-87cd-882c329c9cc8",
+          "id": "8a70e96a-df45-4074-ad34-a32b35f9a62c",
           "name": "Comando Ventilador",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-6.SF-C",
           "control_type": "toggle"
         },
         {
-          "id": "5d42ad03-2e98-4420-b9b4-3e8596386f01",
+          "id": "6c0649bd-3e26-4aa5-91f7-e900cff7a11b",
           "name": "Setpoint T° (Pabellón)",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-6.ZNT-SP",
           "control_type": "temperature"
@@ -222,35 +222,35 @@
       ]
     },
     {
-      "id": "335c5236-1f27-45d0-b093-67a959b42193",
+      "id": "55fa2e7a-dd02-4bc1-93ff-b0c4785ba55c",
       "name": "Pabellón 7 (UMA 2.7)",
       "points": [
         {
-          "id": "92519ad6-6c99-426e-a0b5-0cd747d765ee",
+          "id": "d2f90d97-bcf7-4157-963a-15b930b2d75f",
           "name": "Habilitación UMA",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-7.UNITEN-MODE",
           "control_type": "toggle"
         },
         {
-          "id": "a5f680ca-6393-4d9e-8a16-37fe73795f4f",
+          "id": "d3bca49f-57bf-4923-a592-9f48e52a5bb4",
           "name": "Válvula de Frío",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-7.CLG-O",
           "control_type": "analog"
         },
         {
-          "id": "db96784e-063a-427e-8db1-b5367efbdbfe",
+          "id": "7c302d6d-eecb-4b7f-ac67-f827c9d693c8",
           "name": "Válvula de Calor",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-7.HTG-O",
           "control_type": "analog"
         },
         {
-          "id": "7d40e543-34a5-4501-98f0-52c747fa3c91",
+          "id": "a486d64e-f134-41c9-8263-68a969472fc9",
           "name": "Comando Ventilador",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-7.SF-C",
           "control_type": "toggle"
         },
         {
-          "id": "a146bdbe-f95b-423b-90db-38361d61f32f",
+          "id": "f3c7323b-6c9c-4faf-85f2-96614b3579c4",
           "name": "Setpoint T° (Pabellón)",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-7.ZNT-SP",
           "control_type": "temperature"
@@ -258,35 +258,35 @@
       ]
     },
     {
-      "id": "a9575e60-e7d8-464a-af96-a70e8184fbb1",
+      "id": "d2adee7f-6f1e-4600-9f68-063fcc519b5c",
       "name": "Pabellón 8 (UMA 2.8)",
       "points": [
         {
-          "id": "ef13a8f0-a823-4b43-80c5-9e86722e88e7",
+          "id": "28383c74-8852-4dc7-a0d1-ab01456f27aa",
           "name": "Habilitación UMA",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-8.UNITEN-MODE",
           "control_type": "toggle"
         },
         {
-          "id": "a85f395e-d554-4479-801c-d65e1a04f961",
+          "id": "2d4f6396-360d-4aad-8426-103a31cdde75",
           "name": "Válvula de Frío",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-8.CLG-O",
           "control_type": "analog"
         },
         {
-          "id": "3d75a792-cbd1-4a31-9fa1-29aa4014c2f1",
+          "id": "efb1edf2-bd92-4449-ad56-e99096d6b4b5",
           "name": "Válvula de Calor",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-8.HTG-O",
           "control_type": "analog"
         },
         {
-          "id": "e1c2503c-4e7e-4592-9b4b-aea9e8082957",
+          "id": "f5e46a5d-15a6-440d-b4a7-3840536cca34",
           "name": "Comando Ventilador",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-8.SF-C",
           "control_type": "toggle"
         },
         {
-          "id": "23f99583-7b2e-40a0-8b7e-4a21cd574fbd",
+          "id": "bb768f87-4de8-41d9-9494-4eb9ab441ff8",
           "name": "Setpoint T° (Pabellón)",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-8.ZNT-SP",
           "control_type": "temperature"
@@ -294,37 +294,109 @@
       ]
     },
     {
-      "id": "37e76c06-0d29-43b5-a1c5-690a975ece9c",
+      "id": "ffee0f52-3d41-4be0-b759-542e776bb73c",
       "name": "Pabellón 9 (UMA 2.9)",
       "points": [
         {
-          "id": "4866625d-e7ea-4cb1-866e-d03919a4a0e1",
+          "id": "2a666f40-5213-480e-a28d-37f9783bb7fd",
           "name": "Habilitación UMA",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-9.UNITEN-MODE",
           "control_type": "toggle"
         },
         {
-          "id": "c2228c01-1320-4e90-9e79-df87edfdd592",
+          "id": "3107e7ab-fd2a-4135-8dc2-978128453f22",
           "name": "Válvula de Frío",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-9.CLG-O",
           "control_type": "analog"
         },
         {
-          "id": "34882f6c-4f99-4a73-b651-0fa1be8ac5ca",
+          "id": "590faa57-5b46-433a-a220-7ed5d927d527",
           "name": "Válvula de Calor",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-9.HTG-O",
           "control_type": "analog"
         },
         {
-          "id": "e7133cf7-9273-4166-bf5c-ba2cc3e442d0",
+          "id": "24a3a560-fa00-4cd5-a48b-864d48f147b3",
           "name": "Comando Ventilador",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-9.SF-C",
           "control_type": "toggle"
         },
         {
-          "id": "fd3f7178-71a6-41f3-99e1-92565daf19fd",
+          "id": "786e57db-ca83-4028-b22d-65809aefd6db",
           "name": "Setpoint T° (Pabellón)",
           "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-9.ZNT-SP",
+          "control_type": "temperature"
+        }
+      ]
+    },
+    {
+      "id": "ccd22c44-66b9-4826-a9b2-0036ab4305fe",
+      "name": "Recuperación Parto (UMA 2.20)",
+      "points": [
+        {
+          "id": "10655315-27e2-46b1-8d31-b51eb8ee7885",
+          "name": "Habilitación UMA",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.ENABLE UMA",
+          "control_type": "toggle"
+        },
+        {
+          "id": "6217e442-8789-4da0-b282-b59f32819236",
+          "name": "Válvula de Frío",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.CLG SL-O",
+          "control_type": "analog"
+        },
+        {
+          "id": "362367fc-0e7d-4a6d-9243-7fd84504c4ef",
+          "name": "Válvula de Calor",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.HTG SL-O",
+          "control_type": "analog"
+        },
+        {
+          "id": "fc895655-3978-458d-b8c8-464980c41cb9",
+          "name": "Comando Ventilador",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.SF-C",
+          "control_type": "toggle"
+        },
+        {
+          "id": "5f54ac14-315a-487b-8bed-4599df59a30a",
+          "name": "Setpoint T° (Pabellón)",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-2-20.ZNT-SP",
+          "control_type": "temperature"
+        }
+      ]
+    },
+    {
+      "id": "c095d4a6-2afa-44e0-bf0e-18d8001c7fda",
+      "name": "Farmacia Cerrada (UMA 1.91)",
+      "points": [
+        {
+          "id": "f24a8864-a624-4858-b281-5423c0a8570b",
+          "name": "Habilitación UMA",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.UNITEN-MODE",
+          "control_type": "toggle"
+        },
+        {
+          "id": "8def0e7e-d87f-48ff-845d-0cc66516c4b7",
+          "name": "Válvula de Frío",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.CLG-O",
+          "control_type": "analog"
+        },
+        {
+          "id": "4f72a8a3-dac0-46af-b12b-8689cc0b8e4d",
+          "name": "Válvula de Calor",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.HTG-O",
+          "control_type": "analog"
+        },
+        {
+          "id": "d4f4cd7a-7edd-41a5-8303-01500ed436b9",
+          "name": "Comando Ventilador",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.SF-C",
+          "control_type": "toggle"
+        },
+        {
+          "id": "e4857f8d-50dd-4f62-a15b-b212ed4d865d",
+          "name": "Setpoint T° (Pabellón)",
+          "reference": "HDA-Metasys10:NAE-HArica/Bacnet MSTP.UMA-1-91.ZNT-SP",
           "control_type": "temperature"
         }
       ]
