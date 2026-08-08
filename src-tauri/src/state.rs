@@ -203,6 +203,44 @@ impl AppState {
             ],
         });
 
+        // Grupo de Luces Edificio CAE (Piso 1)
+        initial_umas.push(Uma {
+            id: Uuid::new_v4().to_string(),
+            name: "Luces Edificio CAE (Piso 1)".to_string(),
+            points: vec![
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Pasillo Sur 50% (Hall Espera)".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/N2 Trunk.LUCES P-1B Y STATUS.Binary Outputs.BO-2".to_string(),
+                    control_type: "toggle".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Pasillo Norte 50% (Hall Espera)".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/N2 Trunk.LUCES P-1B Y STATUS.Binary Outputs.BO-3".to_string(),
+                    control_type: "toggle".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Pasillo Circulación Interior Recepción CAE".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/N2 Trunk.LUCES P-1B Y STATUS.Binary Outputs.BO-4".to_string(),
+                    control_type: "toggle".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Hall Espera CAE Oriente".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/N2 Trunk.LUCES P-1B Y STATUS.Binary Outputs.BO-5".to_string(),
+                    control_type: "toggle".to_string(),
+                },
+                UmaPoint {
+                    id: Uuid::new_v4().to_string(),
+                    name: "Hall Acceso CAE".to_string(),
+                    reference: "HDA-Metasys10:NAE-HArica/N2 Trunk.LUCES P-1B Y STATUS.Binary Outputs.BO-6".to_string(),
+                    control_type: "toggle".to_string(),
+                }
+            ],
+        });
+
         AppConfig {
             metasys: MetasysConfig {
                 host: "10.6.18.102".to_string(),

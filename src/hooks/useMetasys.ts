@@ -73,6 +73,16 @@ export function useMetasys() {
     }
   };
 
+  const invokeSchedule = async (payload: any) => {
+    try {
+      const response = await invoke<string>('invoke_schedule', { payload });
+      return response;
+    } catch (err) {
+      console.error('Error invoking schedule', err);
+      throw err;
+    }
+  };
+
   return {
     umas,
     queue,
@@ -81,6 +91,7 @@ export function useMetasys() {
     addPoint,
     removeUma,
     removePoint,
-    enqueueCommand
+    enqueueCommand,
+    invokeSchedule
   };
 }

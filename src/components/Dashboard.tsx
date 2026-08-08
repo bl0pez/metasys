@@ -69,7 +69,7 @@ const PointRow = ({ umaName, point, onCommand }: { umaName: string, point: UmaPo
   );
 };
 
-const EquipmentCard = ({ uma, onCommand }: { uma: any, onCommand: any }) => {
+const EquipmentCard = ({ uma, onCommand, onEnableSchedule }: { uma: any, onCommand: any, onEnableSchedule?: () => void }) => {
   const [expanded, setExpanded] = useState(false);
 
   // Buscar el punto de "Habilitación UMA"
@@ -87,7 +87,18 @@ const EquipmentCard = ({ uma, onCommand }: { uma: any, onCommand: any }) => {
         onClick={() => setExpanded(!expanded)}
         style={{ cursor: 'pointer', borderBottom: (expanded || habilitacionPoint) ? '1px solid var(--border-subtle)' : 'none', paddingBottom: (expanded || habilitacionPoint) ? '1rem' : '0', marginBottom: (expanded || habilitacionPoint) ? '1rem' : '0' }}
       >
-        <h3 className={styles.equipmentTitle}>{uma.name}</h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <h3 className={styles.equipmentTitle}>{uma.name}</h3>
+          {onEnableSchedule && (
+            <button 
+              className={styles.segBtn} 
+              style={{ background: 'var(--primary)', color: 'var(--bg-card)', padding: '0.25rem 0.75rem', fontSize: '0.85rem' }}
+              onClick={(e) => { e.stopPropagation(); onEnableSchedule(); }}
+            >
+              Habilitar Horario
+            </button>
+          )}
+        </div>
         <button 
           className={styles.expandBtn}
           style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0)' }}
@@ -120,7 +131,7 @@ const EquipmentCard = ({ uma, onCommand }: { uma: any, onCommand: any }) => {
 };
 
 const Dashboard: React.FC = () => {
-  const { umas, queue, enqueueCommand } = useMetasys();
+  const { umas, queue, enqueueCommand, invokeSchedule } = useMetasys();
   const [filterText, setFilterText] = useState('');
 
   const handleCommand = (umaName: string, pointName: string, reference: string, action: string, actionName: string) => {
@@ -136,6 +147,39 @@ const Dashboard: React.FC = () => {
             enqueueCommand(umaName, vent.name, vent.reference, action);
           }
         }
+      }
+    }
+  };
+
+  const handleEnableSchedule = async () => {
+    if (window.confirm("¿Estás seguro de que deseas habilitar el horario de todas las luces del Piso 1?")) {
+      const payload = {
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.50% Norte Hall espera CAE Ponien": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Espera Adultos": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Espera farmacia": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Espera Infantil": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Focos Exterior Fachada 18 septie": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Hall Acceso CAE": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Hall ascensores TN2C Farmacia": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Hall espera CAE oriente": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-EXTERIOR.Horario Exteriores": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Letrero Exterior CAE": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.50% sur hall espera CAE Poniente": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Pasillo circulacion Box especial": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Pasillo circulacion DAN": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Pasillo  Interior Recepcion CAE": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Pasillo circulacion sur estacion": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Pasillo especialida sur y norte": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Postes Alumbrado Estacionamiento": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO-ALUM-CAE.PISO 1.Rampa acceso CAE": true,
+        "HDA-Metasys10:NAE-HArica/Schedule.LUCES.CTO- ALUM-ZOCALO.ZOCALO ASCENSORES  TRIPLE": true
+      };
+      
+      try {
+        await invokeSchedule(payload);
+        alert("Horarios habilitados exitosamente en Metasys.");
+      } catch (e: any) {
+        alert("Error al habilitar horarios: " + e);
       }
     }
   };
@@ -169,20 +213,27 @@ const Dashboard: React.FC = () => {
       <section className={styles.card}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
           <h2 className={styles.cardTitle} style={{ marginBottom: 0 }}>Equipos y Puntos de Control</h2>
-          <input 
-            type="text" 
-            placeholder="Buscar pabellón..." 
-            value={filterText}
-            onChange={(e) => setFilterText(e.target.value)}
-            className={styles.filterInput}
-          />
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <input 
+              type="text" 
+              placeholder="Buscar equipo..." 
+              value={filterText}
+              onChange={(e) => setFilterText(e.target.value)}
+              className={styles.filterInput}
+            />
+          </div>
         </div>
         <div className={styles.umasListContainer}>
           {filteredUmas.length === 0 ? (
             <p style={{ color: 'var(--text-secondary)' }}>No se encontraron equipos.</p>
           ) : (
             filteredUmas.map((uma) => (
-              <EquipmentCard key={uma.id} uma={uma} onCommand={handleCommand} />
+              <EquipmentCard 
+                key={uma.id} 
+                uma={uma} 
+                onCommand={handleCommand}
+                onEnableSchedule={uma.name.includes("Luces Edificio CAE") ? handleEnableSchedule : undefined}
+              />
             ))
           )}
         </div>

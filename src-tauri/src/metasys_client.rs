@@ -17,6 +17,7 @@ pub struct MetasysClient {
     pub login_url: String,
     pub command_url: String,
     pub telemetry_url: String,
+    pub schedule_url: String,
     pub token_cache: Arc<RwLock<Option<TokenCache>>>,
     pub auth_user: String,
     pub auth_pass: String,
@@ -35,6 +36,7 @@ impl MetasysClient {
             login_url: format!("https://{}/API/private-api/Authentication/LogIn", host),
             command_url: format!("https://{}/API/private-api/Command/SendCommands", host),
             telemetry_url: format!("https://{}/API/private-api/Equipment/GetPointsDetails", host),
+            schedule_url: format!("https://{}/API/private-api/Schedule/EnableDisableSchedule", host),
             token_cache: Arc::new(RwLock::new(None)),
             auth_user: user.to_string(),
             auth_pass: pass.to_string(),
@@ -178,6 +180,32 @@ impl MetasysClient {
         // Comentado para no inundar si es muy largo, pero imprimimos los primeros 500 chars
         let log_txt = if txt.len() > 500 { &txt[..500] } else { &txt };
         info!("Respuesta Telemetría (parcial): {}", log_txt);
+        Ok(txt)
+    }
+
+    pub async fn set_schedule(&self, token: &str, payload: Value) -> Result<String, Box<dyn Error + Send + Sync>> {
+        info!("Enviando payload de Schedule: {}", payload.to_string());
+        
+        let res = self.client
+            .post(&self.schedule_url)
+            .bearer_auth(token)
+            .json(&payload)
+            .send()
+            .await?;
+
+        if res.status() == reqwest::StatusCode::UNAUTHORIZED {
+            let mut cache = self.token_cache.write().await;
+            *cache = None;
+            return Err("Token rechazado por el servidor (401). Caché invalidado.".into());
+        }
+
+        if !res.status().is_success() {
+            let status = res.status();
+            let error_body = res.text().await.unwrap_or_else(|_| "No se pudo leer el body del error".to_string());
+            return Err(format!("Metasys rechazó el comando de schedule ({}). Body: {}", status, error_body).into());
+        }
+
+        let txt = res.text().await?;
         Ok(txt)
     }
 }

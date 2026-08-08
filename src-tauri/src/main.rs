@@ -102,6 +102,13 @@ async fn invoke_telemetry(payload: serde_json::Value, state: State<'_, Arc<AppSt
     Ok(data)
 }
 
+#[tauri::command]
+async fn invoke_schedule(payload: serde_json::Value, state: State<'_, Arc<AppState>>) -> Result<String, String> {
+    let token = state.metasys_client.get_valid_token().await.map_err(|e| e.to_string())?;
+    let data = state.metasys_client.set_schedule(&token, payload).await.map_err(|e| e.to_string())?;
+    Ok(data)
+}
+
 fn main() {
     let app_state = Arc::new(AppState::new());
     let worker_state = app_state.clone();
@@ -123,7 +130,8 @@ fn main() {
             get_queue_status,
             remove_uma,
             remove_point,
-            invoke_telemetry
+            invoke_telemetry,
+            invoke_schedule
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
